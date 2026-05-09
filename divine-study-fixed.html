@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>১০ দৃষ্টিকোণে কুরআন | Offline Quran Study</title>
+  <meta name="description" content="An offline Islamic Quran study program teaching each Ayah through 10 unique perspectives." />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Noto+Naskh+Arabic:wght@500;700&display=swap');
+
+    :root {
+      --emerald-50: #ecfdf5;
+      --emerald-100: #d1fae5;
+      --emerald-200: #a7f3d0;
+      --emerald-500: #10b981;
+      --emerald-600: #059669;
+      --emerald-700: #047857;
+      --emerald-800: #065f46;
+      --emerald-900: #064e3b;
+      --emerald-950: #022c22;
+      --amber-100: #fef3c7;
+      --amber-300: #fcd34d;
+      --amber-400: #fbbf24;
+      --amber-500: #f59e0b;
+      --amber-900: #78350f;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-400: #9ca3af;
+      --gray-500: #6b7280;
+      --gray-600: #4b5563;
+      --gray-700: #374151;
+      --gray-800: #1f2937;
+      --gray-900: #111827;
+      --white: #ffffff;
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 8px 24px rgba(2, 44, 34, 0.10);
+      --shadow-xl: 0 24px 64px rgba(2, 44, 34, 0.18);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Hind Siliguri', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--gray-800);
+      background: rgba(236, 253, 245, 0.22);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; }
+    img { display: block; max-width: 100%; }
+
+    .container {
+      width: min(100% - 32px, 1180px);
+      margin-inline: auto;
+    }
+    .container-sm {
+      width: min(100% - 32px, 860px);
+      margin-inline: auto;
+    }
+    .section { padding: 96px 0; }
+    .center { text-align: center; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 0;
+      cursor: pointer;
+      border-radius: 16px;
+      padding: 15px 26px;
+      font-size: 18px;
+      font-weight: 700;
+      transition: 0.22s ease;
+      min-height: 54px;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--amber-500); color: #3b2600; }
+    .btn-primary:hover { background: var(--amber-400); }
+    .btn-secondary {
+      background: rgba(6, 95, 70, 0.55);
+      color: var(--white);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+    }
+    .btn-secondary:hover { background: rgba(6, 95, 70, 0.85); }
+    .heading-xl {
+      font-size: clamp(46px, 7vw, 86px);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+      font-weight: 800;
+    }
+    .heading-lg {
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.14;
+      letter-spacing: -0.035em;
+      font-weight: 800;
+    }
+    .heading-md {
+      font-size: clamp(29px, 4vw, 44px);
+      line-height: 1.2;
+      letter-spacing: -0.025em;
+      font-weight: 800;
+    }
+    .lead {
+      font-size: clamp(17px, 2vw, 21px);
+      color: rgba(255,255,255,0.8);
+      max-width: 760px;
+      margin: 22px auto 0;
+    }
+    .muted { color: var(--gray-600); }
+
+    .navbar {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.86);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--emerald-100);
+    }
+    .nav-inner {
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--emerald-950);
+      font-size: 21px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--emerald-500), var(--emerald-800));
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      font-size: 22px;
+      box-shadow: 0 10px 22px rgba(5, 150, 105, 0.22);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: rgba(2, 44, 34, 0.82);
+      font-weight: 600;
+      font-size: 15px;
+    }
+    .nav-links a:hover { color: var(--emerald-600); }
+    .nav-cta {
+      background: var(--emerald-600);
+      color: white;
+      padding: 11px 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: 0.2s ease;
+      white-space: nowrap;
+    }
+    .nav-cta:hover { background: var(--emerald-700); }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 160px 0 112px;
+      color: var(--emerald-50);
+      background:
+        radial-gradient(circle at 25% 22%, rgba(251, 191, 36, 0.12), transparent 30%),
+        radial-gradient(circle at 78% 32%, rgba(16, 185, 129, 0.20), transparent 28%),
+        linear-gradient(135deg, #021b15 0%, var(--emerald-950) 48%, #053b2e 100%);
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0.12;
+      background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0);
+      background-size: 42px 42px;
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: auto 0 -1px 0;
+      height: 100px;
+      background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.04));
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; text-align: center; }
+    .hero .eyebrow {
+      background: rgba(6, 78, 59, 0.70);
+      border: 1px solid rgba(16,185,129,0.25);
+      color: var(--emerald-200);
+      margin-bottom: 28px;
+    }
+    .hero h1 span { color: var(--amber-400); }
+    .hero-actions {
+      margin-top: 38px;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 68px;
+      align-items: center;
+    }
+    .visual-card-wrap { position: relative; }
+    .visual-card-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 18px auto auto -18px;
+      width: 100%;
+      aspect-ratio: 1;
+      background: var(--emerald-50);
+      border-radius: 42px;
+    }
+    .visual-card {
+      position: relative;
+      aspect-ratio: 1;
+      border-radius: 34px;
+      overflow: hidden;
+      border: 5px solid white;
+      box-shadow: var(--shadow-xl);
+      background:
+        radial-gradient(circle at center, rgba(251,191,36,0.25), transparent 18%),
+        linear-gradient(135deg, rgba(6,78,59,0.92), rgba(2,44,34,0.96)),
+        repeating-linear-gradient(45deg, transparent 0 18px, rgba(255,255,255,0.04) 18px 19px);
+      display: grid;
+      place-items: center;
+    }
+    .visual-card::before,
+    .visual-card::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(251,191,36,0.36);
+    }
+    .visual-card::before { width: 47%; height: 47%; }
+    .visual-card::after { width: 31%; height: 31%; border-color: rgba(251,191,36,0.55); }
+    .visual-icon {
+      width: 112px;
+      height: 112px;
+      border-radius: 36px;
+      background: rgba(255,255,255,0.08);
+      display: grid;
+      place-items: center;
+      font-size: 56px;
+      color: var(--amber-400);
+      border: 1px solid rgba(255,255,255,0.14);
+      z-index: 1;
+    }
+    .feature-list { margin-top: 34px; display: grid; gap: 24px; }
+    .feature-item { display: flex; gap: 16px; align-items: flex-start; }
+    .feature-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      font-size: 23px;
+    }
+    .feature-icon.green { background: var(--emerald-100); color: var(--emerald-700); }
+    .feature-icon.amber { background: var(--amber-100); color: var(--amber-900); }
+    .feature-item h4 { color: var(--emerald-950); font-size: 21px; margin-bottom: 4px; }
+
+    .audience { background: var(--emerald-50); }
+    .section-title { max-width: 760px; margin: 0 auto 54px; text-align: center; }
+    .section-title p { margin-top: 12px; color: var(--gray-600); font-size: 18px; }
+    .cards-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .audience-card {
+      background: var(--white);
+      padding: 34px;
+      border-radius: 30px;
+      border: 1px solid var(--emerald-100);
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: 0.22s ease;
+    }
+    .audience-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .round-icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 999px;
+      background: var(--emerald-100);
+      color: var(--emerald-700);
+      display: grid;
+      place-items: center;
+      margin: 0 auto 22px;
+      font-size: 31px;
+    }
+    .audience-card h4 { color: var(--emerald-950); font-size: 22px; margin-bottom: 10px; }
+
+    .lenses {
+      position: relative;
+      overflow: hidden;
+      background: var(--emerald-950);
+      color: white;
+    }
+    .lenses::before {
+      content: '';
+      position: absolute;
+      top: -170px;
+      right: -150px;
+      width: 430px;
+      height: 430px;
+      background: rgba(6, 95, 70, 0.78);
+      filter: blur(90px);
+      border-radius: 50%;
+    }
+    .lenses::after {
+      content: '';
+      position: absolute;
+      left: -180px;
+      top: 44%;
+      width: 430px;
+      height: 430px;
+      background: rgba(251, 191, 36, 0.16);
+      filter: blur(95px);
+      border-radius: 50%;
+    }
+    .lenses .container { position: relative; z-index: 1; }
+    .lens-header { text-align: center; position: relative; margin-bottom: 68px; }
+    .big-10 {
+      position: absolute;
+      inset: 50% 0 auto 0;
+      transform: translateY(-50%);
+      z-index: -1;
+      color: rgba(6, 95, 70, 0.36);
+      font-size: clamp(190px, 27vw, 360px);
+      line-height: 1;
+      font-weight: 900;
+      user-select: none;
+    }
+    .lens-header .eyebrow {
+      color: var(--amber-400);
+      border: 1px solid rgba(251,191,36,0.28);
+      background: rgba(251,191,36,0.08);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+    .gold-text {
+      color: transparent;
+      background: linear-gradient(90deg, #fde68a, #f59e0b);
+      background-clip: text;
+      -webkit-background-clip: text;
+    }
+    .lenses-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 26px;
+    }
+    .lens-card {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      padding: 32px;
+      border-radius: 32px;
+      background: rgba(6, 78, 59, 0.48);
+      border: 1px solid rgba(6, 95, 70, 0.95);
+      box-shadow: 0 22px 40px rgba(0,0,0,0.16);
+      transition: 0.24s ease;
+    }
+    .lens-card:hover { background: rgba(6, 95, 70, 0.75); border-color: rgba(16, 185, 129, 0.38); transform: translateY(-3px); }
+    .lens-number-bg {
+      position: absolute;
+      right: -8px;
+      top: -30px;
+      font-size: 118px;
+      font-weight: 900;
+      font-style: italic;
+      color: rgba(16,185,129,0.09);
+      line-height: 1;
+    }
+    .lens-icon {
+      flex: 0 0 auto;
+      width: 68px;
+      height: 68px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(251,191,36,0.23), rgba(251,191,36,0.05));
+      border: 1px solid rgba(251,191,36,0.22);
+      display: grid;
+      place-items: center;
+      font-size: 30px;
+      color: var(--amber-400);
+    }
+    .lens-small {
+      color: rgba(251,191,36,0.86);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+    .lens-small::before {
+      content: '';
+      width: 18px;
+      height: 1px;
+      background: rgba(251,191,36,0.5);
+    }
+    .lens-card h4 { color: var(--emerald-50); font-size: 25px; margin-bottom: 8px; }
+    .lens-card p { color: rgba(209,250,229,0.72); }
+
+    .demo { background: var(--white); border-bottom: 1px solid var(--emerald-50); }
+    .demo-box {
+      background: rgba(236,253,245,0.62);
+      border: 1px solid var(--emerald-100);
+      border-radius: 42px;
+      padding: clamp(30px, 5vw, 64px);
+      box-shadow: var(--shadow-sm);
+    }
+    .arabic {
+      font-family: 'Noto Naskh Arabic', serif;
+      direction: rtl;
+      color: var(--emerald-900);
+      font-size: clamp(36px, 6vw, 68px);
+      font-weight: 700;
+      line-height: 1.75;
+      margin-top: 24px;
+    }
+    .demo-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      width: min(100%, 980px);
+      margin: 54px auto 0;
+    }
+    .demo-card {
+      background: white;
+      padding: 30px;
+      border-radius: 26px;
+      border: 1px solid var(--emerald-100);
+      box-shadow: var(--shadow-sm);
+      transition: 0.2s ease;
+    }
+    .demo-card:hover { box-shadow: var(--shadow-md); }
+    .demo-card-head { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+    .demo-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 18px;
+      font-weight: 800;
+      flex: 0 0 auto;
+    }
+    .demo-badge.green { background: var(--emerald-100); color: var(--emerald-700); }
+    .demo-badge.amber { background: var(--amber-100); color: var(--amber-900); }
+    .demo-card h4 { color: var(--emerald-950); font-size: 21px; }
+    .demo-note {
+      margin: 46px auto 0;
+      width: min(100%, 760px);
+      padding: 22px;
+      border-radius: 22px;
+      border: 1px solid rgba(167, 243, 208, 0.8);
+      background: rgba(209,250,229,0.48);
+      color: var(--emerald-800);
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .offline {
+      position: relative;
+      overflow: hidden;
+      background: var(--emerald-900);
+      color: var(--emerald-50);
+    }
+    .offline::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0.07;
+      background-image: radial-gradient(circle at 10px 10px, white 2px, transparent 0);
+      background-size: 42px 42px;
+    }
+    .offline-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 68px;
+      align-items: center;
+    }
+    .check-list { list-style: none; margin-top: 34px; display: grid; gap: 18px; }
+    .check-list li { display: flex; align-items: flex-start; gap: 14px; font-size: 19px; font-weight: 600; }
+    .check {
+      margin-top: 4px;
+      flex: 0 0 auto;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--amber-400);
+      color: var(--emerald-950);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      font-size: 16px;
+    }
+    .community-card {
+      position: relative;
+      min-height: 380px;
+      border-radius: 42px;
+      border: 5px solid rgba(6,95,70,0.95);
+      box-shadow: var(--shadow-xl);
+      overflow: visible;
+    }
+    .community-visual {
+      height: 100%;
+      min-height: 380px;
+      border-radius: 37px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 28% 28%, rgba(251,191,36,0.22), transparent 22%),
+        linear-gradient(135deg, rgba(2,44,34,0.50), rgba(6,78,59,0.65)),
+        repeating-linear-gradient(135deg, rgba(255,255,255,0.055) 0 2px, transparent 2px 20px),
+        linear-gradient(135deg, #164e3c, #06261f);
+      display: grid;
+      place-items: center;
+      font-size: 74px;
+    }
+    .quote-card {
+      position: absolute;
+      left: -44px;
+      bottom: -34px;
+      width: min(290px, 86%);
+      background: var(--amber-400);
+      color: #3d2600;
+      padding: 30px;
+      border-radius: 32px;
+      box-shadow: var(--shadow-xl);
+      font-weight: 800;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+    .quote-symbol { display: block; font-size: 54px; line-height: 0.8; opacity: 0.38; margin-bottom: 12px; }
+
+    .teachers { background: var(--gray-50); }
+    .teacher-card, .review-card {
+      background: var(--white);
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid var(--gray-100);
+      box-shadow: var(--shadow-sm);
+      transition: 0.22s ease;
+    }
+    .teacher-card:hover, .review-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .teacher-visual {
+      height: 240px;
+      background: linear-gradient(135deg, var(--emerald-100), #fff7db);
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .teacher-visual::before {
+      content: '';
+      position: absolute;
+      width: 210px;
+      height: 210px;
+      border-radius: 50%;
+      background: rgba(5,150,105,0.12);
+    }
+    .teacher-avatar {
+      position: relative;
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background: var(--emerald-900);
+      color: var(--amber-400);
+      display: grid;
+      place-items: center;
+      font-size: 44px;
+      border: 4px solid white;
+      box-shadow: var(--shadow-md);
+    }
+    .teacher-body { padding: 30px; }
+    .teacher-body h4 { color: var(--emerald-950); font-size: 24px; margin-bottom: 3px; }
+    .teacher-role { color: #d97706; font-size: 14px; font-weight: 700; margin-bottom: 14px; }
+
+    .reviews { background: var(--white); border-bottom: 1px solid var(--emerald-50); }
+    .review-card {
+      padding: 32px;
+      background: rgba(236,253,245,0.55);
+      border-color: var(--emerald-100);
+    }
+    .review-card:hover { background: var(--emerald-50); }
+    .stars { color: var(--amber-400); letter-spacing: 2px; font-size: 20px; margin-bottom: 20px; }
+    .review-card blockquote {
+      color: var(--gray-700);
+      font-size: 18px;
+      line-height: 1.65;
+      margin-bottom: 28px;
+    }
+    .review-person { display: flex; gap: 14px; align-items: center; }
+    .student-avatar {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: white;
+      color: var(--emerald-700);
+      border: 2px solid white;
+      box-shadow: var(--shadow-sm);
+      font-size: 24px;
+      flex: 0 0 auto;
+    }
+    .review-name { color: var(--emerald-950); font-weight: 800; }
+    .review-title { color: var(--gray-500); font-size: 14px; }
+
+    .enroll { background: white; }
+    .enroll-grid {
+      display: grid;
+      grid-template-columns: 2fr 3fr;
+      background: var(--emerald-50);
+      border: 1px solid var(--emerald-100);
+      border-radius: 34px;
+      overflow: hidden;
+      box-shadow: var(--shadow-xl);
+    }
+    .enroll-info {
+      background: var(--emerald-900);
+      color: white;
+      padding: 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 46px;
+    }
+    .enroll-info h3 { font-size: 34px; line-height: 1.2; margin-bottom: 12px; }
+    .info-list { display: grid; gap: 20px; margin-top: 30px; }
+    .info-item { display: flex; gap: 14px; align-items: flex-start; }
+    .info-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(6,95,70,0.88);
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+    }
+    .secure-box {
+      padding: 22px;
+      border-radius: 22px;
+      background: rgba(2,44,34,0.45);
+      border: 1px solid rgba(16,185,129,0.20);
+    }
+    .secure-box strong { display: flex; gap: 9px; align-items: center; margin-bottom: 8px; }
+    .secure-box p { color: rgba(209,250,229,0.70); font-size: 13px; }
+    .enroll-form-wrap { padding: 44px; }
+    .form { display: grid; gap: 22px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    label { display: block; margin-bottom: 7px; color: var(--gray-700); font-weight: 700; font-size: 15px; }
+    input {
+      width: 100%;
+      border: 1px solid var(--gray-200);
+      background: white;
+      padding: 13px 15px;
+      border-radius: 14px;
+      outline: none;
+      color: var(--gray-900);
+      transition: 0.2s ease;
+    }
+    input:focus { border-color: var(--emerald-500); box-shadow: 0 0 0 3px rgba(16,185,129,0.14); }
+    .payment-title { padding-top: 22px; border-top: 1px solid var(--gray-200); }
+    .payment-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 12px; }
+    .pay-btn {
+      border: 1px solid var(--gray-200);
+      background: white;
+      border-radius: 14px;
+      padding: 16px 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: var(--gray-600);
+      cursor: pointer;
+      transition: 0.2s ease;
+      font-weight: 700;
+    }
+    .pay-btn:hover { background: var(--gray-50); }
+    .pay-icon { font-size: 24px; }
+    .pay-btn.active-bkash { border-color: #ec4899; background: #fdf2f8; color: #be185d; box-shadow: 0 0 0 1px #ec4899 inset; }
+    .pay-btn.active-nagad { border-color: #f97316; background: #fff7ed; color: #c2410c; box-shadow: 0 0 0 1px #f97316 inset; }
+    .pay-btn.active-card { border-color: var(--emerald-600); background: var(--emerald-50); color: var(--emerald-700); box-shadow: 0 0 0 1px var(--emerald-600) inset; }
+    .submit-btn {
+      width: 100%;
+      border: 0;
+      background: var(--emerald-600);
+      color: white;
+      border-radius: 16px;
+      padding: 16px;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: 800;
+      transition: 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+    }
+    .submit-btn:hover { background: var(--emerald-700); }
+    .submit-btn:disabled { opacity: 0.75; cursor: not-allowed; }
+    .success-box {
+      display: none;
+      min-height: 440px;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 34px 12px;
+    }
+    .success-icon {
+      width: 86px;
+      height: 86px;
+      border-radius: 50%;
+      background: var(--emerald-100);
+      color: var(--emerald-700);
+      display: grid;
+      place-items: center;
+      font-size: 42px;
+      margin-bottom: 22px;
+    }
+
+    .faq { background: var(--gray-50); }
+    .faq-list { display: grid; gap: 14px; }
+    .faq-item {
+      border: 1px solid var(--gray-200);
+      border-radius: 22px;
+      overflow: hidden;
+      transition: 0.2s ease;
+    }
+    .faq-item.open {
+      background: white;
+      border-color: var(--emerald-200);
+      box-shadow: var(--shadow-sm);
+    }
+    .faq-question {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      color: var(--gray-800);
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      text-align: left;
+      cursor: pointer;
+      font-size: 19px;
+      font-weight: 800;
+    }
+    .faq-question span:first-child { text-align: left; }
+    .faq-item.open .faq-question { color: var(--emerald-700); }
+    .faq-arrow { color: var(--gray-400); transition: 0.2s ease; flex: 0 0 auto; }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); color: var(--emerald-600); }
+    .faq-answer {
+      display: none;
+      padding: 0 24px 22px;
+      color: var(--gray-600);
+      line-height: 1.75;
+    }
+    .faq-answer-inner { border-top: 1px solid var(--gray-100); padding-top: 16px; }
+    .faq-item.open .faq-answer { display: block; }
+
+    .footer {
+      background: var(--emerald-950);
+      color: rgba(209,250,229,0.64);
+      border-top: 1px solid var(--emerald-900);
+      padding: 54px 0;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 38px;
+    }
+    .footer .brand { color: white; margin-bottom: 16px; }
+    .footer h4 { color: var(--emerald-50); margin-bottom: 14px; font-size: 18px; }
+    .footer ul { list-style: none; display: grid; gap: 8px; }
+    .footer a:hover { color: var(--emerald-400); }
+    .copyright { margin-top: 22px; font-size: 14px; }
+
+    .fade-up { opacity: 0; transform: translateY(22px); animation: fadeUp 0.72s ease forwards; }
+    .fade-up.delay-1 { animation-delay: 0.08s; }
+    .fade-up.delay-2 { animation-delay: 0.16s; }
+    .fade-up.delay-3 { animation-delay: 0.24s; }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .intro-grid, .offline-grid, .enroll-grid { grid-template-columns: 1fr; }
+      .cards-3, .lenses-grid, .demo-cards, .footer-grid { grid-template-columns: 1fr; }
+      .quote-card { left: 18px; bottom: -38px; }
+      .offline { padding-bottom: 120px; }
+    }
+    @media (max-width: 640px) {
+      .section { padding: 70px 0; }
+      .hero { padding: 130px 0 82px; }
+      .hero-actions, .hero-actions .btn { width: 100%; }
+      .nav-inner { height: 72px; }
+      .brand { font-size: 18px; }
+      .brand-mark { width: 38px; height: 38px; }
+      .nav-cta { padding: 9px 14px; font-size: 14px; }
+      .visual-card-wrap::before { display: none; }
+      .lens-card { flex-direction: column; padding: 26px; }
+      .demo-box { border-radius: 30px; }
+      .form-row, .payment-grid { grid-template-columns: 1fr; }
+      .enroll-info, .enroll-form-wrap { padding: 28px; }
+      .community-card, .community-visual { min-height: 320px; }
+      .teacher-visual { height: 210px; }
+      .faq-question { align-items: flex-start; font-size: 17px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="Divine Study Home"><span class="brand-mark">☰</span><span>ডিভাইন স্টাডি</span></a>
+      <div class="nav-links">
+        <a href="#about">প্রোগ্রাম সম্পর্কে</a>
+        <a href="#lenses">১০টি লেন্স</a>
+        <a href="#teachers">উস্তাদগণ</a>
+        <a href="#faq">সাধারণ প্রশ্ন</a>
+      </div>
+      <a class="nav-cta" href="#enroll">ভর্তি হোন</a>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container-sm hero-content">
+        <div class="eyebrow fade-up">📍 অফলাইন ইন-পার্সন ক্লাস (ঢাকা)</div>
+        <h1 class="heading-xl fade-up delay-1">কুরআন অধ্যয়ন <br><span>১০টি ভিন্ন দৃষ্টিকোণে</span></h1>
+        <p class="lead fade-up delay-2">একটি যুগান্তকারী অফলাইন স্টাডি প্রোগ্রাম—যেখানে কুরআনের প্রতিটি আয়াতকে শুধু অনুবাদে সীমাবদ্ধ না রেখে, ১০টি সুনির্দিষ্ট লেন্সের মাধ্যমে গভীরে বিশ্লেষণ করা হয়।</p>
+        <div class="hero-actions fade-up delay-3">
+          <a class="btn btn-primary" href="#enroll">আজই রেজিস্ট্রেশন করুন <span>›</span></a>
+          <a class="btn btn-secondary" href="#lenses">লেন্সগুলো সম্পর্কে জানুন</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container intro-grid">
+        <div class="visual-card-wrap">
+          <div class="visual-card"><div class="visual-icon">📖</div></div>
+        </div>
+        <div>
+          <h2 class="heading-md" style="color: var(--emerald-950);">কুরআন অধ্যয়নের নতুন এক দিগন্ত</h2>
+          <p class="muted" style="font-size: 18px; margin-top: 22px;">অধিকাংশ মানুষ কুরআন তেলাওয়াত করেন, কেউ কেউ শুধু অনুবাদ পড়েন। কিন্তু কুরআনের প্রকৃত স্বাদ পেতে হলে প্রয়োজন এর গভীরে প্রবেশ করা। আমাদের ৬ মাস মেয়াদী এই অফলাইন প্রোগ্রামে আপনি শিখবেন কীভাবে একটি আয়াতকে দশটি ভিন্ন দৃষ্টিকোণ থেকে অনুধাবন করতে হয়।</p>
+          <div class="feature-list">
+            <div class="feature-item">
+              <div class="feature-icon green">📅</div>
+              <div><h4>৬ মাসের নিবিড় পাঠ</h4><p class="muted">প্রতি সপ্তাহে ২ দিন ইন-পার্সন ক্লাস, স্কলারদের সরাসরি তত্ত্বাবধানে।</p></div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon amber">📚</div>
+              <div><h4>ইন্টারেক্টিভ ম্যাটেরিয়াল</h4><p class="muted">প্রত্যেক শিক্ষার্থীর জন্য বিশেষ ১০-লেন্স স্টাডি জার্নাল ও ম্যাটেরিয়াল।</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section audience">
+      <div class="container">
+        <div class="section-title">
+          <h2 class="heading-md" style="color: var(--emerald-950);">কাদের জন্য এই প্রোগ্রাম?</h2>
+          <p>যাঁরা দ্বীন সম্পর্কে জানতে আগ্রহী রুটিন মাফিক ও সিস্টেমেটিক উপায়ে।</p>
+        </div>
+        <div class="cards-3">
+          <article class="audience-card"><div class="round-icon">👥</div><h4>বিশ্ববিদ্যালয় শিক্ষার্থী</h4><p class="muted">যাঁরা একাডেমিক পড়াশোনার পাশাপাশি ইসলামি জ্ঞান অর্জনে আগ্রহী।</p></article>
+          <article class="audience-card"><div class="round-icon">🏢</div><h4>পেশাজীবী</h4><p class="muted">ব্যস্ততার মাঝেও কুরআনের সাথে সময় কাটাতে চান এবং জীবনে প্রয়োগ করতে চান।</p></article>
+          <article class="audience-card"><div class="round-icon">✨</div><h4>জ্ঞান অনুসন্ধানী</h4><p class="muted">সাধারণ অনুবাদ পড়ার পর যাঁদের আরও গভীরে জানার তৃষ্ণা তৈরি হয়েছে।</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="lenses" class="section lenses">
+      <div class="container">
+        <div class="lens-header">
+          <div class="big-10">10</div>
+          <div class="eyebrow">স্টাডি ফ্রেমওয়ার্ক</div>
+          <h2 class="heading-lg">১০টি অধ্যয়নের <span class="gold-text">লেন্স</span></h2>
+          <p style="max-width: 720px; margin: 18px auto 0; color: rgba(209,250,229,0.86); font-size: 18px;">প্রতিটি আয়াত অনুধাবনের জন্য আমরা এই সুনির্দিষ্ট ১০টি স্তরের মধ্য দিয়ে যাবো, যা কুরআনের প্রতি আপনার দৃষ্টিভঙ্গি ও চিন্তার গভীরতাকে বহুগুণে বাড়িয়ে দেবে।</p>
+        </div>
+        <div class="lenses-grid">
+          <article class="lens-card"><span class="lens-number-bg">1</span><div class="lens-icon">📘</div><div><div class="lens-small">Lens 01</div><h4>অনুবাদ</h4><p>আয়াতের শাব্দিক ও প্রাঞ্জল অর্থ, যা সহজে বোধগম্য।</p></div></article>
+          <article class="lens-card"><span class="lens-number-bg">2</span><div class="lens-icon">📖</div><div><div class="lens-small">Lens 02</div><h4>তাফসির</h4><p>ক্লাসিক্যাল ও আধুনিক তাফসিরের আলোকে আয়াতের গভীর ব্যাখ্যা।</p></div></article>
+          <article class="lens-card"><span class="lens-number-bg">3</span><div class="lens-icon">🏛️</div><div><div class="lens-small">Lens 03</div><h4>ইতিহাস</h4><p>আয়াত নাযিলের প্রেক্ষাপট এবং পূর্ববর্তী উম্মতের ঘটনা প্রবাহ।</p></div></article>
+          <article class="lens-card"><span class="lens-number-bg">4</span><div class="lens-icon">⚖️</div><div><div class="lens-small">Lens 04</div><h4>বিধান ও আহকাম</h4><p>আয়াত থেকে উদ্ভূত ফিকহী, সামাজিক ও আইনি বিধানসমূহ।</p></div></article>
+          <article class="lens-card"><span class="lens-number-bg">5</span><div class="lens-icon">💡</div><div><div class="lens-small">Lens 05</div><h4>তাদাব্বুর</h4><p>আয়াতের গভীরে গিয়ে সাধারণ চিন্তাভাবনা ও উপলব্ধি।</p></div></article>
+          <article class="lens-card"><span class="lens-number-bg">6</span><div class="lens-icon">⚛️</div><div><div class="lens-small">Lens 06</div><h4>বিজ্ঞানের সংযোগ</h4><p>কুরআনের আয়াতের সাথে আধুনিক বিজ্ঞান ও সৃষ্টির মেলবন্ধন।</p></div></article>
+          <article class="lens-card"><span class="lens-number-bg">7</span><div class="lens-icon">🧭</div><div><div class="lens-small">Lens 07</div><h4>বাস্তব প্রয়োগ</h4><p>আমাদের আধুনিক সমাজ ও প্রতিদিনের জীবনে আয়াতের বাস্তবিক ব্যবহার।</p></div></article>
+          <article class="lens-card"><span class="lens-number-bg">8</span><div class="lens-icon">💬</div><div><div class="lens-small">Lens 08</div><h4>মূল বার্তা</h4><p>পুরো আয়াতের সারসংক্ষেপ বা কোর মেসেজ, যা মনে রাখা জরুরি।</p></div></article>
+          <article class="lens-card"><span class="lens-number-bg">9</span><div class="lens-icon">🎯</div><div><div class="lens-small">Lens 09</div><h4>কর্মপরিকল্পনা</h4><p>আয়াত থেকে শিক্ষা নিয়ে আমাদের ব্যক্তিজীবনের সুনির্দিষ্ট অ্যাকশন প্ল্যান।</p></div></article>
+          <article class="lens-card"><span class="lens-number-bg">10</span><div class="lens-icon">🤍</div><div><div class="lens-small">Lens 10</div><h4>ব্যক্তিগত রিফ্লেকশন</h4><p>নিজের জীবনের সাথে মিলিয়ে আত্মপর্যালোচনা এবং উপলব্ধি।</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section demo">
+      <div class="container">
+        <div class="section-title">
+          <h2 class="heading-lg" style="color: var(--emerald-950);">একটি ডেমো দেখা যাক</h2>
+          <p>কীভাবে আমরা একটি আয়াতকে ১০টি লেন্সের মাধ্যমে বিশ্লেষণ করবো তার একটি সংক্ষিপ্ত উদাহরণ।</p>
+        </div>
+        <div class="demo-box">
+          <div class="center">
+            <div class="eyebrow" style="background: var(--emerald-100); color: var(--emerald-800);">📘 সূরা আল-আসর, আয়াত ১-২</div>
+            <div class="arabic">وَالْعَصْرِ ۙ إِنَّ الْإِنْسَانَ لَفِي خُسْرٍ</div>
+          </div>
+          <div class="demo-cards">
+            <article class="demo-card"><div class="demo-card-head"><span class="demo-badge green">১</span><h4>অনুবাদ</h4></div><p class="muted" style="font-size: 18px;">সময়ের কসম! নিশ্চয়ই মানুষ ক্ষতির মধ্যে নিমজ্জিত।</p></article>
+            <article class="demo-card"><div class="demo-card-head"><span class="demo-badge amber">২</span><h4>তাফসির</h4></div><p class="muted" style="font-size: 18px;">'আসর' বলতে শুধু বিকেল নয়, বরং প্রবাহমান মহাকালকে বোঝানো হয়েছে। মহাকালের কসম খেয়ে আল্লাহ একটি অমোঘ সত্য ঘোষণা করছেন।</p></article>
+            <article class="demo-card"><div class="demo-card-head"><span class="demo-badge green">৭</span><h4>বাস্তব প্রয়োগ</h4></div><p class="muted" style="font-size: 18px;">আমরা প্রতিদিন যে সময়গুলো সোশ্যাল মিডিয়ায় বা অপ্রয়োজনীয় কাজে নষ্ট করছি, তা আসলে আমাদের জীবনেরই একটি অংশ যা আর ফিরে আসবে না।</p></article>
+            <article class="demo-card"><div class="demo-card-head"><span class="demo-badge amber">৯</span><h4>কর্মপরিকল্পনা</h4></div><p class="muted" style="font-size: 18px;">আজ থেকে প্রতিদিন অন্তত একটি ভালো কাজ করবো এবং অপচয় হওয়া সময়ের একটি ডেইলি টাইম অডিট করবো।</p></article>
+          </div>
+          <div class="demo-note">✨ ক্লাসে আমরা একটি আয়াতের সবগুলো (১০টি) লেন্স নিয়েই বিস্তারিত আলোচনা করবো।</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section offline">
+      <div class="container offline-grid">
+        <div>
+          <h2 class="heading-lg">কেন অফলাইন স্টাডি?</h2>
+          <p style="color: rgba(209,250,229,0.9); font-size: 18px; margin-top: 22px;">অনলাইনে প্রচুর কোর্স রয়েছে, কিন্তু কুরআনের মতো গভীর একটি বিষয়ে ইন-পার্সন কমিউনিটির কোনো বিকল্প নেই। সরাসরি উস্তাদদের সংস্পর্শ, সহপাঠীদের সাথে আলোচনা এবং একটি ডেডিকেটেড পরিবেশ—যা অনলাইনে পাওয়া খুব কঠিন।</p>
+          <ul class="check-list">
+            <li><span class="check">✓</span><span>মনোযোগ বিঘ্নহীন ২ ঘণ্টার নিবিড় পরিবেশে পড়াশোনা</span></li>
+            <li><span class="check">✓</span><span>সরাসরি প্রশ্ন করার সুযোগ এবং ইন-ক্ল্যাশ ডিসকাশন</span></li>
+            <li><span class="check">✓</span><span>একই মানসিকতার ভাইদের সাথে একটি শক্তিশালী নেটওয়ার্ক</span></li>
+          </ul>
+        </div>
+        <div class="community-card">
+          <div class="community-visual">🕌</div>
+          <div class="quote-card"><span class="quote-symbol">“</span>Face-to-face learning creates an unbreakable bond between the knowledge, the student, and the teacher.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="teachers" class="section teachers">
+      <div class="container">
+        <div class="section-title">
+          <h2 class="heading-lg" style="color: var(--emerald-950);">আমাদের সম্মানীয় উস্তাদগণ</h2>
+          <p>যাঁরা এই দীর্ঘ যাত্রায় আপনাদের গাইড করবেন এবং প্রতিটি লেন্সের সঠিক ব্যবহার শেখাবেন।</p>
+        </div>
+        <div class="cards-3">
+          <article class="teacher-card"><div class="teacher-visual"><div class="teacher-avatar">👳</div></div><div class="teacher-body"><h4>শাইখ আব্দুর রহমান</h4><div class="teacher-role">প্রধান ইনস্ট্রাক্টর ও স্কলার</div><p class="muted">আল-আজহার বিশ্ববিদ্যালয় থেকে কুরআন সায়েন্সে স্নাতকোত্তর। ১০ বছরের বেশি সময় ধরে তাফসির ও আরবি ভাষা পড়াচ্ছেন।</p></div></article>
+          <article class="teacher-card"><div class="teacher-visual"><div class="teacher-avatar">🧑‍🏫</div></div><div class="teacher-body"><h4>ড. নাঈমুল ইসলাম</h4><div class="teacher-role">ইসলামিক স্কলার ও গবেষক</div><p class="muted">ইসলামিক ইতিহাসে পিএইচডি। তিনি অতীত ইতিহাস এবং সমসাময়িক প্রেক্ষাপটে কুরআনের বিধানের সমন্বয় নিয়ে আলোচনা করেন।</p></div></article>
+          <article class="teacher-card"><div class="teacher-visual"><div class="teacher-avatar">🎙️</div></div><div class="teacher-body"><h4>উস্তাদ ফাহিম আহমেদ</h4><div class="teacher-role">ইয়ুথ কাউন্সেলর</div><p class="muted">তরুণদের আত্মিক উন্নয়ন ও কুরআনের বাস্তবসম্মত প্রয়োগ নিয়ে কাজ করছেন। কর্মপরিকল্পনা অংশে তিনি দিকনির্দেশনা দেবেন।</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reviews">
+      <div class="container">
+        <div class="section-title">
+          <div style="color: var(--emerald-600); font-size: 14px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 10px;">মতামত</div>
+          <h2 class="heading-lg" style="color: var(--emerald-950);">শিক্ষার্থীদের অভিজ্ঞতা</h2>
+          <p>যাঁরা আমাদের পূর্ববর্তী ব্যাচগুলোতে অংশগ্রহণ করেছেন, তাঁদের কিছু মূল্যবান মতামত।</p>
+        </div>
+        <div class="cards-3">
+          <article class="review-card"><div class="stars">★★★★★</div><blockquote>“আগে শুধু কুরআনের বাংলা অনুবাদ পড়তাম, কিন্তু '১০টি লেন্স' ফ্রেমওয়ার্ক আমার চিন্তার জগতকে পুরোপুরি বদলে দিয়েছে। বিশেষ করে 'বাস্তব প্রয়োগ' ও 'কর্মপরিকল্পনা' অংশগুলো আমাকে প্রতিদিন কুরআন অনুযায়ী জীবন সাজাতে সাহায্য করছে।”</blockquote><div class="review-person"><div class="student-avatar">আ</div><div><div class="review-name">আহমেদ জুবায়ের</div><div class="review-title">ঢাকা বিশ্ববিদ্যালয় শিক্ষার্থী</div></div></div></article>
+          <article class="review-card"><div class="stars">★★★★★</div><blockquote>“সারাদিনের কর্মব্যস্ততার পর অনলাইনে মনোযোগ ধরে রাখা কঠিন ছিল। এই অফলাইন প্রোগ্রামটির পরিবেশ এতো প্রশান্তিদায়ক যে, ক্লাসের ২ ঘন্টা কীভাবে কেটে যায় টেরই পাই না। অফলাইন কমিউনিটির কোনো বিকল্প নেই।”</blockquote><div class="review-person"><div class="student-avatar">স</div><div><div class="review-name">সাইফুল ইসলাম</div><div class="review-title">ব্যাংকার</div></div></div></article>
+          <article class="review-card"><div class="stars">★★★★★</div><blockquote>“বিজ্ঞানের সংযোগ এবং তাদাব্বুর (চিন্তাভাবনা) লেন্স দুটি আমার সবচেয়ে প্রিয়। কুরআন যে কতটা আধুনিক, তা এই ক্লাসে না আসলে হয়তো কখনো এতো গভীরভাবে বুঝতে পারতাম না। আলহামদুলিল্লাহ!”</blockquote><div class="review-person"><div class="student-avatar">ত</div><div><div class="review-name">তারেক মাহমুদ</div><div class="review-title">আইটি প্রফেশনাল</div></div></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="enroll" class="section enroll">
+      <div class="container-sm">
+        <div class="enroll-grid">
+          <aside class="enroll-info">
+            <div>
+              <h3>ভর্তি প্রক্রিয়া</h3>
+              <p style="color: rgba(209,250,229,0.82);">পরবর্তী ব্যাচের রেজিস্ট্রেশন চলছে। সিট সংখ্যা সীমিত হওয়ায় দ্রুত আসন নিশ্চিত করুন।</p>
+              <div class="info-list">
+                <div class="info-item"><div class="info-icon">🕒</div><div><strong>ভর্তির শেষ তারিখ</strong><p style="color: var(--emerald-200); font-size: 14px;">২৫ নভেম্বর, ২০২৬</p></div></div>
+                <div class="info-item"><div class="info-icon">📍</div><div><strong>ক্লাসের স্থান</strong><p style="color: var(--emerald-200); font-size: 14px;">মিরপুর-১০ ডিভাইন সেন্টার, ঢাকা</p></div></div>
+              </div>
+            </div>
+            <div class="secure-box"><strong>🛡️ নিরাপদ পেমেন্ট</strong><p>SSLCommerz এর মাধ্যমে বিকাশ, নগদ ও যেকোনো ব্যাংকের কার্ড দিয়ে পেমেন্ট সম্পূর্ণ সুরক্ষিত।</p></div>
+          </aside>
+          <div class="enroll-form-wrap">
+            <form id="enrollForm" class="form">
+              <div>
+                <label for="name">আপনার নাম</label>
+                <input id="name" name="name" required type="text" placeholder="সম্পূর্ণ নাম লিখুন" />
+              </div>
+              <div class="form-row">
+                <div><label for="phone">মোবাইল নম্বর</label><input id="phone" name="phone" required type="tel" placeholder="01XXX-XXXXXX" /></div>
+                <div><label for="email">ইমেইল ঠিকানা</label><input id="email" name="email" required type="email" placeholder="example@email.com" /></div>
+              </div>
+              <div class="payment-title">
+                <label>পেমেন্ট মাধ্যম নির্বাচন করুন (SSLCommerz)</label>
+                <div class="payment-grid">
+                  <button type="button" class="pay-btn active-bkash" data-method="bkash"><span class="pay-icon">📱</span><span>bKash</span></button>
+                  <button type="button" class="pay-btn" data-method="nagad"><span class="pay-icon">📱</span><span>Nagad</span></button>
+                  <button type="button" class="pay-btn" data-method="card"><span class="pay-icon">💳</span><span>Card / Net</span></button>
+                </div>
+              </div>
+              <button id="submitBtn" class="submit-btn" type="submit">পেমেন্ট করুন ও ভর্তি নিশ্চিত করুন <span>›</span></button>
+            </form>
+            <div id="successBox" class="success-box">
+              <div class="success-icon">🔒</div>
+              <h4 style="font-size: 25px; color: var(--gray-900); margin-bottom: 8px;">SSLCommerz-এ রিডাইরেক্ট করা হচ্ছে...</h4>
+              <p class="muted">অনুগ্রহ করে অপেক্ষা করুন, আপনাকে পেমেন্ট গেটওয়েতে নিয়ে যাওয়া হচ্ছে।</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="section faq">
+      <div class="container-sm">
+        <div class="section-title">
+          <h2 class="heading-md" style="color: var(--emerald-950);">সাধারণ জিজ্ঞাসা</h2>
+          <p>কোর্স সংক্রান্ত যেকোনো প্রশ্নের উত্তর জেনে নিন</p>
+        </div>
+        <div class="faq-list">
+          <article class="faq-item open"><button class="faq-question" type="button"><span>অফলাইন ক্লাসগুলো কোথায় অনুষ্ঠিত হবে?</span><span class="faq-arrow">⌄</span></button><div class="faq-answer"><div class="faq-answer-inner">ঢাকার মিরপুর-১০ এর মূল স্টাডি সেন্টারে আমাদের ক্লাসগুলো অনুষ্ঠিত হবে। ভর্তির পর শিক্ষার্থীদের বিস্তারিত লোকেশন গাইড দেওয়া হবে।</div></div></article>
+          <article class="faq-item"><button class="faq-question" type="button"><span>প্রোগ্রামটির সময়কাল কতদিন এবং সপ্তাহে কয়দিন ক্লাস হবে?</span><span class="faq-arrow">⌄</span></button><div class="faq-answer"><div class="faq-answer-inner">এই স্টাডি প্রোগ্রামটি ৬ মাস মেয়াদী। সপ্তাহে দুই দিন (শনি ও মঙ্গলবার) মাগরিব থেকে এশা পর্যন্ত ক্লাস হবে।</div></div></article>
+          <article class="faq-item"><button class="faq-question" type="button"><span>আমি আরবি পড়তে পারি না, আমি কি এই কোর্সে যুক্ত হতে পারব?</span><span class="faq-arrow">⌄</span></button><div class="faq-answer"><div class="faq-answer-inner">হ্যাঁ, পারবেন। এই কোর্সের মূল ফোকাস কুরআনের অর্থ, তাফসির ও চিন্তাভাবনার উপর। তবে কোর্সের পাশাপাশি প্রাইমারি লেভেলের আরবি পড়ার জন্য আমরা এক্সট্রা সাপোর্ট সেশন দিয়ে থাকি।</div></div></article>
+          <article class="faq-item"><button class="faq-question" type="button"><span>পেমেন্ট কীভাবে করব এবং রিফান্ড পলিসি কী?</span><span class="faq-arrow">⌄</span></button><div class="faq-answer"><div class="faq-answer-inner">আপনি SSLCommerz এর মাধ্যমে বিকাশ, নগদ বা যেকোনো ব্যাংক কার্ড দিয়ে অনলাইনে নিরাপদে পেমেন্ট করতে পারবেন। প্রথম দুই ক্লাস করার পর ভালো না লাগলে ফুল রিফান্ড আবেদন করার সুযোগ রয়েছে।</div></div></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand"><span class="brand-mark">☰</span><span>ডিভাইন স্টাডি</span></div>
+        <p style="max-width: 410px;">কুরআন অধ্যয়নের একটি নতুন দিগন্ত, যেখানে আমরা প্রতিটি আয়াতকে ১০টি ভিন্ন দৃষ্টিকোণ থেকে অনুধাবন করার চেষ্টা করি।</p>
+        <p class="copyright">© <span id="year"></span> Divine Study. All rights reserved.</p>
+      </div>
+      <div>
+        <h4>লিঙ্কসমূহ</h4>
+        <ul>
+          <li><a href="#about">প্রোগ্রাম সম্পর্কে</a></li>
+          <li><a href="#lenses">১০টি লেন্স</a></li>
+          <li><a href="#teachers">উস্তাদগণ</a></li>
+          <li><a href="#enroll">রেজিস্ট্রেশন</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>যোগাযোগ</h4>
+        <ul>
+          <li>+880 1XXX-XXXXXX</li>
+          <li>contact@divinely.bd</li>
+          <li>মিরপুর-১০, ঢাকা, বাংলাদেশ</li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const year = document.getElementById('year');
+    if (year) year.textContent = new Date().getFullYear();
+
+    const payButtons = document.querySelectorAll('.pay-btn');
+    const payClasses = ['active-bkash', 'active-nagad', 'active-card'];
+    payButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        payButtons.forEach((btn) => btn.classList.remove(...payClasses));
+        const method = button.dataset.method;
+        button.classList.add(method === 'bkash' ? 'active-bkash' : method === 'nagad' ? 'active-nagad' : 'active-card');
+      });
+    });
+
+    const form = document.getElementById('enrollForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const successBox = document.getElementById('successBox');
+    if (form && submitBtn && successBox) {
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'প্রসেসিং হচ্ছে...';
+        window.setTimeout(() => {
+          form.style.display = 'none';
+          successBox.style.display = 'flex';
+        }, 900);
+      });
+    }
+
+    document.querySelectorAll('.faq-question').forEach((question) => {
+      question.addEventListener('click', () => {
+        const currentItem = question.closest('.faq-item');
+        document.querySelectorAll('.faq-item').forEach((item) => {
+          if (item !== currentItem) item.classList.remove('open');
+        });
+        currentItem.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>
